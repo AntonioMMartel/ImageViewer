@@ -15,21 +15,25 @@ import java.util.List;
 public class ImageRepository {
     // Solo tengo 1 repositorio de imagenes.
     private static final List<Image> imageList = new ArrayList<>();
-    
-   public static void add(Image image){
+
+    public static void add(Image image){
        imageList.add(image);
-   }
-   
-   public static void add(List<Image> images){
+    }
+
+    public static void add(List<Image> images){
        for (Image image : images) {
            imageList.add(image);
        }
-   }
+    }
+
+    public void remove(Image o) {
+        imageList.remove(o);
+    }
    
     public static Image get(int index) {
         return imageList.get(index);
     }
-    
+
     public static int size() {
         return imageList.size();
     }

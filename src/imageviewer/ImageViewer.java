@@ -23,18 +23,9 @@ public class ImageViewer {
 
     public static void main(String[] args) {
         
-        
-        ImageRepository imageRepository = new ImageRepository();
-        ImageDisplay imageDisplay = new MockImageDisplay(imageRepository);
-        
-        ImageListLoader imageListLoader = new MockImageLoader();
-        imageRepository.add(imageListLoader.load());
-
-        Map<String, Command> commands = new HashMap<>();
-        commands.put("d", new NextImageCommand(imageDisplay));
-        commands.put("a", new PrevImageCommand(imageDisplay));
-        commands.put("q", new QuitCommand());
-        
+        ImageRepository imageRepository = initRepository();
+        ImageDisplay imageDisplay = creatImageDisplay(imageRepository);
+        Map<String, Command> commands = initCommands(imageDisplay);
         
         Scanner scanner = new Scanner(System.in);
         while(true){
@@ -44,5 +35,28 @@ public class ImageViewer {
         }
         
     }
-
+    
+    private static Map<String, Command> initCommands(ImageDisplay imageDisplay) {
+        Map<String, Command> commands = new HashMap<>();
+        commands.put("d", new NextImageCommand(imageDisplay));
+        commands.put("a", new PrevImageCommand(imageDisplay));
+        commands.put("q", new QuitCommand());
+        return commands;
+    }
+    
+    private static ImageRepository initRepository(){
+        ImageRepository imageRepository = new ImageRepository();
+        ImageDisplay imageDisplay = new MockImageDisplay(imageRepository);
+        
+        ImageListLoader imageListLoader = new MockImageLoader();
+        imageRepository.add(imageListLoader.load());
+        
+        return imageRepository;
+    }
+    
+    private static ImageDisplay creatImageDisplay(ImageRepository imageRepository) {
+        ImageDisplay imageDisplay = new MockImageDisplay(imageRepository);
+        return imageDisplay;
+    }
+    
 }

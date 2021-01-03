@@ -6,11 +6,10 @@
 
 package imageviewer;
 
-import imageviewer.Mock.MockImageDisplay;
-import imageviewer.Mock.MockImageLoader;
-import imageviewer.Models.Image;
-import imageviewer.View.ImageDisplay;
-import imageviewer.View.ImageListLoader;
+import imageviewer.Mock.*;
+import imageviewer.Models.*;
+import imageviewer.View.*;
+import imageviewer.control.*;
 import java.util.List;
 import java.util.Scanner;
 
@@ -21,25 +20,26 @@ public class ImageViewer {
 
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
         
-        ImageDisplay imageDisplay = new MockImageDisplay();
+        
+        ImageRepository imageRepository = new ImageRepository();
+        ImageDisplay imageDisplay = new MockImageDisplay(imageRepository);
+        
         ImageListLoader imageListLoader = new MockImageLoader();
-        List<Image> lista = imageListLoader.load();
-        imageDisplay.display(lista.get(0));
-        int index = 0;
+        imageRepository.add(imageListLoader.load());
+
+        
+        Command nextImage = new NextImageCommand(imageDisplay);
+        Command prevImage = new PrevImageCommand(imageDisplay);
+        Scanner scanner = new Scanner(System.in);
         while(true){
             String input = scanner.next();
             if( input.equals("q")) break;
-            if(input.equals("d")){
-                index++;
-                if(index >= lista.size()) index=0;
-                imageDisplay.display(lista.get(index));
-            }
             if(input.equals("a")){
-                index--;
-                if(index < 0) index=lista.size() - 1;
-                imageDisplay.display(lista.get(index));
+                prevImage.execute();
+            }
+            if(input.equals("d")){
+                nextImage.execute();
             }
         }
         

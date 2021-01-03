@@ -15,7 +15,7 @@ import java.util.List;
  * @author Antonio Miguel Martel
  */
 public class MockImageLoader implements ImageListLoader{
-
+    
     
     @Override
     public List<Image> load() {

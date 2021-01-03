@@ -6,11 +6,28 @@
 
 package imageviewer.control;
 
+import imageviewer.Models.Image;
+import imageviewer.View.ImageDisplay;
+import java.util.List;
+
 /**
  * @author Antonio Miguel Martel
  */
-public class PrevImageCommand {
-    
+public class PrevImageCommand implements Command {
+    private final ImageDisplay imageDisplay;
+
+    public PrevImageCommand(ImageDisplay imageDisplay) {
+        this.imageDisplay = imageDisplay;
+    }
+
+    @Override
+    public void execute() {
+        imageDisplay.setIndex(imageDisplay.getIndex() - 1);
+        if(imageDisplay.getIndex() <= 0) 
+            imageDisplay.setIndex(imageDisplay.getImageRepository().size() - 1);
+        imageDisplay.display();
+    }
+
     
     
 }

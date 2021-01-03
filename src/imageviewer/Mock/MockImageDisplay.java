@@ -7,17 +7,27 @@
 package imageviewer.Mock;
 
 import imageviewer.Models.Image;
+import imageviewer.Models.ImageRepository;
 import imageviewer.View.ImageDisplay;
+import java.util.List;
 
 /**
  * @author Antonio Miguel Martel
  */
-public class MockImageDisplay implements ImageDisplay{
+public class MockImageDisplay extends ImageDisplay{
 
-    @Override
-    public void display(Image image) {
-        System.out.println(image.getName());
+    public MockImageDisplay(ImageRepository imageRepository) {
+        super(imageRepository);
     }
+    
+    
+    
+    @Override
+    public void display() {
+        System.out.println(this.current().getName());
+    }
+
+  
     
     
     

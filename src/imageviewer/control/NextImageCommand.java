@@ -6,10 +6,28 @@
 
 package imageviewer.control;
 
+import imageviewer.View.ImageDisplay;
+
 /**
  * @author Antonio Miguel Martel
  */
-public class NextImageCommand {
+public class NextImageCommand implements Command{
+    private final ImageDisplay imageDisplay;
+
+    public NextImageCommand(ImageDisplay imageDisplay) {
+        this.imageDisplay = imageDisplay;
+    }
+
+    @Override
+    public void execute() {
+        imageDisplay.setIndex(imageDisplay.getIndex() + 1);
+        if(imageDisplay.getIndex() >= imageDisplay.getImageRepository().size())
+            imageDisplay.setIndex(0);
+        imageDisplay.display();
+    }
+
+
+    
     
     
     

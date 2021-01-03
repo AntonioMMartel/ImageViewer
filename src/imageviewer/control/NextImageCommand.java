@@ -20,9 +20,11 @@ public class NextImageCommand implements Command{
 
     @Override
     public void execute() {
-        imageDisplay.setIndex(imageDisplay.getIndex() + 1);
-        if(imageDisplay.getIndex() >= imageDisplay.getImageRepository().size())
-            imageDisplay.setIndex(0);
+        //Lo cambio. Es menos legible pero mas eficiente.
+        // Que es mejor? Este cambio no me influye en casi nada
+        // En esta caso siempre optamos por lo legible
+        //Lo que tenia en la ver2 es mejor que lo que tengo ahora.
+        imageDisplay.setIndex((imageDisplay.getIndex() + 1) % imageDisplay.getImageRepository().size());
         imageDisplay.display();
     }
 

@@ -10,7 +10,9 @@ import imageviewer.Mock.*;
 import imageviewer.Models.*;
 import imageviewer.View.*;
 import imageviewer.control.*;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 /**
@@ -28,19 +30,17 @@ public class ImageViewer {
         ImageListLoader imageListLoader = new MockImageLoader();
         imageRepository.add(imageListLoader.load());
 
+        Map<String, Command> commands = new HashMap<>();
+        commands.put("d", new NextImageCommand(imageDisplay));
+        commands.put("a", new PrevImageCommand(imageDisplay));
+        commands.put("q", new QuitCommand());
         
-        Command nextImage = new NextImageCommand(imageDisplay);
-        Command prevImage = new PrevImageCommand(imageDisplay);
+        
         Scanner scanner = new Scanner(System.in);
         while(true){
             String input = scanner.next();
-            if( input.equals("q")) break;
-            if(input.equals("a")){
-                prevImage.execute();
-            }
-            if(input.equals("d")){
-                nextImage.execute();
-            }
+            //if (commands.containsKey(input)) commands.get(input).execute();
+            commands.getOrDefault(scanner.next(), new NullCommand()).execute();
         }
         
     }

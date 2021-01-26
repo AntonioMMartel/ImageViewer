@@ -6,20 +6,16 @@
 
 package imageviewer.Mock;
 
-import imageviewer.Models.Image;
 import imageviewer.Models.ImageRepository;
-import imageviewer.View.ImageDisplay;
-import java.util.List;
 
 /**
  * @author Antonio Miguel Martel
  */
-public class MockImageDisplay extends ImageDisplay{
+public class MockImageDisplay extends AbstractImageDisplay{
 
     public MockImageDisplay(ImageRepository imageRepository) {
         super(imageRepository);
     }
-    
     
     
     @Override
@@ -27,7 +23,6 @@ public class MockImageDisplay extends ImageDisplay{
         System.out.println(this.current().getName());
     }
 
-  
     
     
     

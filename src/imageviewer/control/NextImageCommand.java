@@ -6,6 +6,7 @@
 
 package imageviewer.control;
 
+import imageviewer.Mock.AbstractImageDisplay;
 import imageviewer.View.ImageDisplay;
 
 /**

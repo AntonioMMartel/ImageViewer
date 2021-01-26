@@ -1,13 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package imageviewer.Models;
-
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.imageio.ImageIO;
 
 /**
  * @author Antonio Miguel Martel
@@ -37,4 +34,21 @@ public class ImageRepository {
     public static int size() {
         return imageList.size();
     }
+    
+    public BufferedImage loadImage(int index) {
+        try {
+            return ImageIO.read(new File(ImageRepository.get(index).getName()));
+        } catch (IOException e) {
+            System.out.println("No se ha podido obtener la imagen de la carpeta de imagenes." + e.getMessage());
+            System.out.println("Retornando un valor nulo.");
+            return null;
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
 }

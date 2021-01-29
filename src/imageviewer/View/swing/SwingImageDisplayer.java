@@ -7,7 +7,7 @@
 package imageviewer.View.swing;
 
 import imageviewer.Models.Image;
-import imageviewer.Models.ImageRepository;
+import imageviewer.control.ImageRepository;
 import imageviewer.View.ImageDisplay;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -21,7 +21,7 @@ import javax.swing.JPanel;
  * @author Antonio Miguel Martel
  */
 
-public class SwingImageDisplayer extends JPanel implements ImageDisplay {
+public final class SwingImageDisplayer extends JPanel implements ImageDisplay {
     private BufferedImage currentImage, nextImage;
     private int offset, index, nextIndex = 0;
     
@@ -32,6 +32,7 @@ public class SwingImageDisplayer extends JPanel implements ImageDisplay {
         MouseHandler mouseHandler = new MouseHandler();
         super.addMouseListener(mouseHandler);
         super.addMouseMotionListener(mouseHandler);
+        display();
     }
     
         @Override
@@ -70,6 +71,7 @@ public class SwingImageDisplayer extends JPanel implements ImageDisplay {
         g.drawImage(nextImage, valueOffset, 0, null);
     }
     
+    @Override
     public void display() {
         this.currentImage = imageRepository.loadImage(index);
         repaint();

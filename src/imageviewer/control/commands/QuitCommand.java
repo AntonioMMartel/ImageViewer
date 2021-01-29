@@ -3,16 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package imageviewer.control.commands;
 
-package imageviewer.control;
+import static java.lang.System.exit;
 
 /**
- * @author Antonio Miguel Martel
+ *
+ * @author Usuario
  */
-public class NullCommand implements Command{
+public class QuitCommand implements Command{
 
     @Override
     public void execute() {
+        System.out.println("Cerrando aplicacion.");
+        exit(0);
     }
+    
+    
     
 }

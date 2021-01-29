@@ -1,4 +1,5 @@
-package imageviewer.Models;
+package imageviewer.control;
+import imageviewer.Models.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -16,6 +17,18 @@ public class ImageRepository {
     public static void add(Image image){
        imageList.add(image);
     }
+
+    public ImageRepository() { }
+    
+    //Singleton pattern.
+    private static class SingletonHelper {
+        private static final ImageRepository INSTANCE = new ImageRepository();
+    }
+    
+    public static ImageRepository getInstance() {
+            return SingletonHelper.INSTANCE;
+    }
+    
 
     public static void add(List<Image> images){
        for (Image image : images) {

@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package imageviewer.control;
+package imageviewer.control.commands;
 
 /**
  * @author Antonio Miguel Martel

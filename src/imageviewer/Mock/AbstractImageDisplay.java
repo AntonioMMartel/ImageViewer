@@ -7,7 +7,7 @@
 package imageviewer.Mock;
 
 import imageviewer.Models.Image;
-import imageviewer.Models.ImageRepository;
+import imageviewer.control.ImageRepository;
 import imageviewer.View.ImageDisplay;
 
 /**

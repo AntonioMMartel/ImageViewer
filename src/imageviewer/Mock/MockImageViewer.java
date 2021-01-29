@@ -6,6 +6,12 @@
 
 package imageviewer.Mock;
 
+import imageviewer.control.commands.PrevImageCommand;
+import imageviewer.control.commands.NullCommand;
+import imageviewer.control.commands.QuitCommand;
+import imageviewer.control.commands.NextImageCommand;
+import imageviewer.control.commands.Command;
+import imageviewer.control.ImageRepository;
 import imageviewer.Models.*;
 import imageviewer.View.*;
 import imageviewer.control.*;

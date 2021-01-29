@@ -7,7 +7,7 @@
 package imageviewer.View;
 
 import imageviewer.Models.Image;
-import imageviewer.Models.ImageRepository;
+import imageviewer.control.ImageRepository;
 
 /**
  * @author Antonio Miguel Martel

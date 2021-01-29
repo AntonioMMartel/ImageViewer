@@ -7,10 +7,10 @@
 package imageviewer.View.swing;
 
 import imageviewer.Models.Image;
-import imageviewer.Models.ImageRepository;
-import imageviewer.control.Command;
-import imageviewer.control.NextImageCommand;
-import imageviewer.control.PrevImageCommand;
+import imageviewer.control.ImageRepository;
+import imageviewer.control.commands.Command;
+import imageviewer.control.commands.NextImageCommand;
+import imageviewer.control.commands.PrevImageCommand;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import static java.awt.FlowLayout.CENTER;
@@ -65,7 +65,7 @@ public class SwingImageViewer extends JFrame {
     
 
     private ImageRepository loadRepository() {
-        ImageRepository repo = new ImageRepository();
+        ImageRepository repo = ImageRepository.getInstance();
         ImageRepository.add(loadImages());
         return repo;
     }

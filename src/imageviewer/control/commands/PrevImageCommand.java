@@ -4,27 +4,28 @@
  * and open the template in the editor.
  */
 
-package imageviewer.control;
+package imageviewer.control.commands;
 
 import imageviewer.View.ImageDisplay;
 
 /**
  * @author Antonio Miguel Martel
  */
-public class DeleteImageCommand implements Command{
-    
+public class PrevImageCommand implements Command {
     private final ImageDisplay imageDisplay;
 
-    public DeleteImageCommand(ImageDisplay imageDisplay) {
+    public PrevImageCommand(ImageDisplay imageDisplay) {
         this.imageDisplay = imageDisplay;
     }
     
     @Override
     public void execute() {
-        imageDisplay.getImageRepository().remove(imageDisplay.current());
-        new NextImageCommand(imageDisplay).execute();
+        imageDisplay.setIndex(imageDisplay.getIndex() - 1);
+        if(imageDisplay.getIndex() < 0) 
+            imageDisplay.setIndex(imageDisplay.getImageRepository().size() - 1);
+        imageDisplay.display();
     }
-    
+
     
     
 }

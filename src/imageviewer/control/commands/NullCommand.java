@@ -4,18 +4,15 @@
  * and open the template in the editor.
  */
 
-package imageviewer.control;
+package imageviewer.control.commands;
 
 /**
  * @author Antonio Miguel Martel
  */
-public class AddImageCommand implements Command {
+public class NullCommand implements Command{
 
     @Override
     public void execute() {
-        
     }
-    
-    
     
 }

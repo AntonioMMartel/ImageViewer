@@ -6,7 +6,7 @@
 
 package imageviewer.Mock;
 
-import imageviewer.Models.ImageRepository;
+import imageviewer.control.ImageRepository;
 
 /**
  * @author Antonio Miguel Martel
